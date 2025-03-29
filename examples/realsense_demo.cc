@@ -29,7 +29,7 @@ void keyboardInputFunction()
 int main()
 {
     std::thread input_thread(keyboardInputFunction);
-    int top_k = 4096;
+    int top_k = 1000;
     float detection_threshold = 0.5;
     bool use_cuda = false; 
     XFeat::XFDetector detector(top_k, detection_threshold, use_cuda);
@@ -50,7 +50,7 @@ int main()
 
         realsense_camera.startStreaming();
         realsense_camera.getColourFrame(frame);
-        cv::imshow("camera_feed",frame.bgr_frame);
+        frame.vis("camera feed");
         char tmp;
 
         mut.lock();
@@ -87,7 +87,6 @@ int main()
         cv::drawMatches(ref_img,ref_kps,frame.bgr_frame,kps,matches,output_img);
 
         cv::imshow("matching frame",output_img);
-        cv::waitKey(1);
     }   
 
     input_thread.join();

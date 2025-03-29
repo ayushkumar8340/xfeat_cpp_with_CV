@@ -50,7 +50,7 @@ typedef struct
     void vis(std::string name)
     {
         cv::imshow(name,gray_frame);
-        cv::waitKey(1);
+        cv::waitKey(10);
     }
 
     void destroy(std::string name)
