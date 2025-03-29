@@ -45,7 +45,9 @@ make -j4
 ```
 To build the project using Docker
 ```bash 
-sudo docker build -t xfeat .
+sudo docker build -t xfeat . 
+            or
+./build_docker.sh
 xhost + (in different terminal)
 ./run_docker.sh xfeat
 mkdir build 
